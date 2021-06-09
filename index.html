@@ -11,14 +11,14 @@
 <script src="todo.json"></script>
 <style>
 body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 50%; }
 </style>
 </head>
 <body>
 <style>
     .mapboxgl-popup {
         max-width: 400px;
-        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font: 18px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     }
 </style>
 <div id="map"></div>
@@ -30,49 +30,54 @@ body { margin: 0; padding: 0; }
 	mapboxgl.accessToken = 'pk.eyJ1Ijoib2xpdmVyZzRlIiwiYSI6ImNrcG4zbGE0bjE3YXgydm4yNmJoMXRqeHQifQ.HwfDD1-P2ORqxEXyDNDXGg';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-100.04, 38.907],
-        zoom: 3
+        style: 'mapbox://styles/mapbox/dark-v10',
+        center: [-102.28259, 21.88234],
+        zoom: 4.5
     });
 
-    map.on('load', function () {
-        // Add a source for the state polygons.
-        map.addSource('states', {
+    map.on('load', function (e) {
+      //toma el json
+        map.addSource('estados', {
             'type': 'geojson',
             'data': 'map.geojson'
         });
 
-        
-
-        // Add a layer showing the state polygons.
+            //colores semaforo
         map.addLayer({
-            'id': 'states-layer',
+            'id': 'semaforo',
             'type': 'fill',
-            'source': 'states',
+            'source': 'estados',
             'paint': {
-                'fill-color': 'rgba(200, 100, 240, 0.4)',
-                'fill-outline-color': 'rgba(200, 100, 240, 1)'
+                'fill-color': ['get','fill'],
+                'fill-outline-color': 'rgb(0, 0, 0)'
             }
         });
-        // When a click event occurs on a feature in the states layer, open a popup at the
-        // location of the click, with description HTML from its properties.
-        map.on('click', 'states-layer', function (e) {
-            new mapboxgl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML(e.features[0].properties.entidad_nombre + e.features[0].properties.casos)
-                .addTo(map);
+        //crea el popup
+        var popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+            
         });
 
-        // Change the cursor to a pointer when the mouse is over the states layer.
-        map.on('mouseenter', 'states-layer', function () {
-            map.getCanvas().style.cursor = 'pointer';
-        });
+            //muestra el popup cuando el mouse entra
+        map.on('mouseenter', 'semaforo', function (e) {
+           
+            map.getCanvas().style.cursor = 'pointer'; 
+            
+            popup.setLngLat(e.lngLat)
+            popup.setHTML(e.features[0].properties.entidad_nombre + e.features[0].properties.casos + e.features[0].properties.defunciones)
+            popup.addTo(map)
 
-        // Change it back to a pointer when it leaves.
-        map.on('mouseleave', 'states-layer', function () {
+
+        });
+      //quita el popup cuando el mouse sale
+        map.on('mouseleave', 'semaforo', function () {
             map.getCanvas().style.cursor = '';
+            popup.remove();
         });
     });
+
+
 </script>
 
 </body>
