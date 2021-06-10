@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Step 1 - Include the fusioncharts core library -->
+        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+        <!-- Step 2 - Include the fusion theme -->
+        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+   <script></script>
+        <title>Document</title>
+</head>
+<body>
+    <div id="chart">
+    </div>
+    <script>
+
+
+FusionCharts.addDep(Column2D);
+FusionCharts.addDep(FusionTheme);
+
+const chartConfigs = {
+  //Specify the chart type
+  type: "column2d",
+  //Set the container object
+  renderAt: "chart-container",
+  //Specify the width of the chart
+  width: "100%",
+  //Specify the height of the chart
+  height: "400",
+  //Set the type of data
+  dataFormat: "json",
+  dataSource: {
+    chart: {
+      //Set the chart caption
+      caption: "Countries With Most Oil Reserves [2017-18]",
+      //Set the chart subcaption
+      subCaption: "In MMbbl = One Million barrels",
+      //Set the x-axis name
+      xAxisName: "Country",
+      //Set the y-axis name
+      yAxisName: "Reserves (MMbbl)",
+      numberSuffix: "K",
+      //Set the theme for your chart
+      theme: "fusion"
+    },
+    // Chart Data from Step 2
+    data: chartData
+  }
+};
+
+// Create an Instance with chart options
+var chartInstance = new FusionCharts({
+    type: 'Column2D',
+    width: '700', // Width of the chart
+    height: '400', // Height of the chart
+    dataFormat: 'jsonurl',
+    dataSource: 'https://static.fusioncharts.com/sample/oilReserves.json'
+});
+// Render
+chartInstance.render();
+
+    </script>
+</body>
+</html>

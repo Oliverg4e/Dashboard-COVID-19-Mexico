@@ -136,7 +136,7 @@
   "infected": 809751,
   "negative": 956251,
   "suspected": 302645,
-  "deceased": 83507,
+  "deceased" : 80655,
   "tested": "N/A",
   "recovered": "N/A",
   "lastUpdatedAtApify": "2020-10-12T20:00:13.734Z",
