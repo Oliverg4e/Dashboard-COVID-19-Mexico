@@ -16,21 +16,22 @@ body { margin: 0; padding: 0; }
 </head>
 <body>
 <style>
-    .mapboxgl-popup {
+   .mapboxgl-popup {
         max-width: 200px;
-        font: 12px/15px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    
-        
+        font: 12px/12px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        margin: auto;
     }
-
     .mapboxgl-popup-content {
-    border: 2px solid #929292;
-    box-shadow: 0px 2px 4px 2px rgba(0,0,0,.1)
-    
-   
-  
-   
-}
+    height: 80px;
+    width: 200px;
+    padding: unset;
+    border-width: 3px;
+    border-style:solid;
+    border-color: rgb(255, 255, 255);
+    border-radius: 100px;
+    background: #f5ffcf;
+    box-shadow: 0px 2px 4px 2px rgba(0,0,0,.1); 
+    }
 
 </style>
 <div id="map"></div>
@@ -42,9 +43,9 @@ body { margin: 0; padding: 0; }
 	mapboxgl.accessToken = 'pk.eyJ1Ijoib2xpdmVyZzRlIiwiYSI6ImNrcG4zbGE0bjE3YXgydm4yNmJoMXRqeHQifQ.HwfDD1-P2ORqxEXyDNDXGg';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v10',
+        style: 'mapbox://styles/mapbox/light-v10',
         center: [-102.28259, 21.88234],
-        zoom: 4.5
+        zoom: 4.3
     });
 
     map.on('load', function (e) {
@@ -62,7 +63,7 @@ body { margin: 0; padding: 0; }
             'paint': {
                 'fill-color': ['get','fill'],
                 'fill-outline-color': 'rgb(0, 0, 0)',
-                
+                'fill-opacity':['get','fill-opacity']
             }
         });
 
@@ -77,12 +78,12 @@ body { margin: 0; padding: 0; }
             }
             });
        
-    });
- //crea el popup
- var popup = new mapboxgl.Popup({
+        });
+        //crea el popup
+        var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: false,
-            //anchor: 'bottom'
+            anchor: 'bottom'
             
         });
 
@@ -102,7 +103,7 @@ body { margin: 0; padding: 0; }
         });
       //quita el popup cuando el mouse sale
         map.on('mouseleave', 'semaforo', function () {
-          // map.getCanvas().style.cursor = '';
+           map.getCanvas().style.cursor = '';
             popup.remove();
         });
 

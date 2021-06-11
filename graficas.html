@@ -4,63 +4,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Step 1 - Include the fusioncharts core library -->
-        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-        <!-- Step 2 - Include the fusion theme -->
-        <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
    <script></script>
         <title>Document</title>
 </head>
 <body>
-    <div id="chart">
-    </div>
-    <script>
+
+  <div style="width: 100%">
+    <canvas id="GraphContagios" width="25" height="5"></canvas>
+</div>
+
+<div style="width: 100%">
+  <canvas id="GraphMuertos" width="25" height="5"></canvas>
+</div>
+  
+  
+  <script>
+   
+    
+   $.getJSON("LATEST.json", function(data) {  
+    var datos = [];
+    var estados = [];
+    var contagios =[];
+    var muertos =[];
+    for (var prop in data) {
+        var arr = [];
+        for(key in data[prop]){
+            arr.push(data[prop][key]);
+        }
+        datos.push(arr);
+        estados.push(datos[prop][0])
+        contagios.push(datos[prop][1])
+        muertos.push(datos[prop][2])
+    }   console.log(datos) 
+   
+  
+
+  var ctx = document.getElementById('GraphContagios').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: estados,
+          datasets: [{
+              label: 'Contagios',
+              data: contagios,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)'
+                  
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)'
+                 
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
 
 
-FusionCharts.addDep(Column2D);
-FusionCharts.addDep(FusionTheme);
+  var ctx2 = document.getElementById('GraphMuertos').getContext('2d');
+  var myChart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+          labels: estados,
+          datasets: [{
+              label: 'Defunciones',
+              data: muertos,
+              backgroundColor: [
+                  'rgba(05, 99, 132, 0.2)'
+                  
+              ],
+              borderColor: [
+                  'rgba(05, 99, 132, 1)'
+                 
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+  window.onload = function(){
+    var ctx = document.getElementById("GraphContagios").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(myChart, {
+        responsive : true
+    });
+    var ctx2 = document.getElementById("GraphMuertos").getContext("2d");
+    window.myBar = new Chart(ctx2).Bar(myChart2, {
+        responsive : true
+    });
+}
+  });
 
-const chartConfigs = {
-  //Specify the chart type
-  type: "column2d",
-  //Set the container object
-  renderAt: "chart-container",
-  //Specify the width of the chart
-  width: "100%",
-  //Specify the height of the chart
-  height: "400",
-  //Set the type of data
-  dataFormat: "json",
-  dataSource: {
-    chart: {
-      //Set the chart caption
-      caption: "Countries With Most Oil Reserves [2017-18]",
-      //Set the chart subcaption
-      subCaption: "In MMbbl = One Million barrels",
-      //Set the x-axis name
-      xAxisName: "Country",
-      //Set the y-axis name
-      yAxisName: "Reserves (MMbbl)",
-      numberSuffix: "K",
-      //Set the theme for your chart
-      theme: "fusion"
-    },
-    // Chart Data from Step 2
-    data: chartData
-  }
-};
 
-// Create an Instance with chart options
-var chartInstance = new FusionCharts({
-    type: 'Column2D',
-    width: '700', // Width of the chart
-    height: '400', // Height of the chart
-    dataFormat: 'jsonurl',
-    dataSource: 'https://static.fusioncharts.com/sample/oilReserves.json'
-});
-// Render
-chartInstance.render();
+  </script>
+  
 
-    </script>
+   
 </body>
 </html>
