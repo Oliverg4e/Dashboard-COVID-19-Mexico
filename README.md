@@ -3,8 +3,8 @@ mapa interactvio y graficas de casos de covid y defunciones en México
 
 ############################
 
-MIEMBROS DEL EQUIPO
+# MIEMBROS DEL EQUIPO
 
-# OLIVER ENRIQUE PÉREZ GUZMÁM
+# OLIVER ENRIQUE PÉREZ GUZMÁN
 # BRYAN ANTHONY MUÑOZ RODRIGUEZ
 # BRANDO JULIAN BORREGO IRAZOQUI
