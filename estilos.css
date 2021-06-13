@@ -1,13 +1,9 @@
 .grafic{
-    background: #CFF4FF;
+    background: #ffffff;
     height: 500px;
     width: 500px;
-    position: relative; top: 0%; bottom: 0; left: 73%; width: 70%; height: 100%;
+    position: relative; top: 0; bottom: 0; left: 50%; width: 50%; height: 100%;
 }
-
-.mapa{
-   
-    
-    position: absolute; top: 0%; bottom: 0; left: 0%; width: 70%; height: 100%;
-
+.titulo {
+    text-align: center;
 }
