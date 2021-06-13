@@ -12,14 +12,14 @@
 <script src="map.geojson"></script>
 <link href="estilos.css" rel="stylesheet" type="text/css">
 <style>
-body { margin: 0; padding: 0; }
+
 #map { position: absolute; top: 0; bottom: 0; width: 50%; }
 </style>
 </head>
 
-<body>
+<body class="body">
 
-
+<div class="mapa">
 <style>
    .mapboxgl-popup {
         max-width: 200px;
@@ -115,14 +115,14 @@ body { margin: 0; padding: 0; }
         });
 
 </script>
+</div>
 
-
-</body>
+<div class="grafica">
 <script>
     $(document).ready(function () {
       $('.grafic').load('./graficas.html');
     });
   </script>
-
-
+</body>
+</div>
 </html>
