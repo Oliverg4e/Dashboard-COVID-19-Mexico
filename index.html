@@ -6,8 +6,11 @@
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
 <link href="graficas.html" rel="import" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+<script src="https://kit.fontawesome.com/3f1991ef7a.js" crossorigin="anonymous"></script>
 <script src="LATEST.json"></script>
 <script src="map.geojson"></script>
 <link href="estilos.css" rel="stylesheet" type="text/css">
@@ -17,7 +20,7 @@ body { margin: 0; padding: 0; }
 </style>
 </head>
 
-<body>
+<body class="body">
 <div class="titulo">
     <h2>Dashboard Covid-19 Mexico</h2>
 </div>
@@ -124,6 +127,26 @@ body { margin: 0; padding: 0; }
       $('.grafic').load('./graficas.html');
     });
   </script>
+</div>
+<div class="tablas">
+    <div class="positivos" href="https://datos.covid-19.conacyt.mx/">
+        <h2>Positivos estimados</h2>
+        <h2>2,637,348</h2>
+        <i class="fas fa-head-side-cough"></i>
+
+    </div>
+    <div class="defunciones" href="https://datos.covid-19.conacyt.mx/">
+        <h2>Defunciones estimados</h2>
+        <h2>242,689</h2>
+        <i class="fas fa-skull-crossbones"></i>
+    </div>
+    <div class="activos" href="https://datos.covid-19.conacyt.mx/">
+        <h2>Activos estimados</h2>
+        <h2>24,654</h2>
+        <i class="fas fa-head-side-mask"></i>
+        
+    </div>
+      
 </div>
 </body>
 

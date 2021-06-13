@@ -6,4 +6,75 @@
 }
 .titulo {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.tablas{
+    padding-top: 70px;
+    padding-left: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+.positivos{
+    float: left;
+    margin-left: 200px;
+    border: rgb(206, 29, 29) 5px solid;
+    padding: 10px;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    color: black;
+    border-radius: 10px;
+    width: 300px;
+    text-align:center;
+    text-decoration: none
+}
+.defunciones {
+    
+    float: left;
+    margin-left: 200px;
+    border: rgb(24, 23, 23) 5px solid;
+    padding: 10px;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    color: black;
+    border-radius: 10px;
+    width: 300px;
+    text-align:center;
+    text-decoration: none
+}
+.activos{
+    float: left;
+    margin-left: 200px;
+    border: rgb(106, 202, 42) 5px solid;
+    padding: 10px;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    color: black;
+    border-radius: 10px;
+    width: 300px;
+    text-align:center;
+    text-decoration: none
+}
+.positivos:hover {
+     box-shadow: 0 0 10px 10px rgb(206, 29, 29) inset;
+     color: black;
+     
+}
+.defunciones:hover {
+    box-shadow: 0 0 10px 10px rgb(24, 23, 23) inset;
+    color: black;
+    
+}
+.activos:hover {
+    box-shadow: 0 0 10px 10px rgb(106, 202, 42) inset;
+    color: black;
+
+    
+}
+.positivos i{
+    font-size: 40px;
+}
+.defunciones i{
+    font-size: 40px;
+}
+.activos i{
+    font-size: 40px;
 }
